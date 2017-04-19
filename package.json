@@ -4,8 +4,16 @@
   "description": "A service for saving links to web comics and review them",
   "main": "./server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./server/app.js",
+    "pretest": "eslint ./server --fix",
+    "test": "echo \"All Tests Completed\""
   },
+  "keywords": [
+    "Node",
+    "MVC",
+    "Redis",
+    "Login"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/melissay94/PageADay.git"
@@ -15,5 +23,28 @@
   "bugs": {
     "url": "https://github.com/melissay94/PageADay/issues"
   },
-  "homepage": "https://github.com/melissay94/PageADay#readme"
+  "homepage": "https://github.com/melissay94/PageADay#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.17.1",
+    "compression": "^1.6.2",
+    "connect-redis": "^3.2.0",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.2",
+    "helmet": "^3.5.0",
+    "mongoose": "^4.9.5",
+    "serve-favicon": "^2.4.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "nodemon": "^1.11.0"
+  }
 }
