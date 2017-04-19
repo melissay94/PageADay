@@ -1,0 +1,19 @@
+{
+  "name": "page-a-day",
+  "version": "1.0.0",
+  "description": "A service for saving links to web comics and review them",
+  "main": "./server/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melissay94/PageADay.git"
+  },
+  "author": "Melissa Young",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/melissay94/PageADay/issues"
+  },
+  "homepage": "https://github.com/melissay94/PageADay#readme"
+}
