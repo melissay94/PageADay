@@ -1,0 +1,47 @@
+#header {
+	text-align: center;
+	background-color:  #7D6B95;
+}
+
+#header h1 {
+	font-family: "Carter One", cursive, sans-serif;
+	font-weight: bolder;	
+	font-size: 150px;
+	color: #DED8E5;
+	margin-top: 0px;
+}
+
+#header p {
+	padding-top: 30px;
+	font-weight: bold;
+	font-size: 35px;
+}
+
+.description {
+	margin-left: 100px;
+	margin-right: 100px;
+	font-size: 20px;
+	width: 50%;
+}
+
+.description h3, .new-user h3 {
+	font-weight: bold;
+	font-size: 35px;
+}
+
+.new-user {
+	background-color: #DED8E5;
+	padding:20px;
+	padding-left: 100px;
+
+}
+
+.new-user .btn {
+	color: #DED8E5;
+	background-color: #7D6B95;
+	font-family: "Carter One", cursive, sans-serif;
+	font-size: 20px;
+	margin-top: 10px;
+	float: right;
+	padding: 10px 30px 10px 30px;
+}

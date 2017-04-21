@@ -32,7 +32,7 @@ const app = express();
 
 // Set up all the paths, resources, and libraries the app will need
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
-app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
+app.use(favicon(`${__dirname}/../hosted/img/logo.png`));
 app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({
