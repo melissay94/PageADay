@@ -8,6 +8,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const expressHandlebars = require('express-handlebars');
 const session = require('express-session');
+const RedisStore = require('connect-redis')(session);
+const url = require('url');
+const csrf = require('csurf');
 
 // Pull in the routes
 const router = require('./router.js');
@@ -16,7 +19,7 @@ const router = require('./router.js');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 // Set up database url with mongo
-const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/PageADay';
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
 
 // Use mongo to print out an error if it occurs
 mongoose.connect(dbURL, (err) => {
@@ -26,31 +29,58 @@ mongoose.connect(dbURL, (err) => {
   }
 });
 
+// Set up username and password for connecting to Redis
+let redisURL = {
+  hostname: 'localhost',
+  port: 6379,
+};
+
+let redisPASS;
+
+if (process.env.REDISCLOUD_URL) {
+  redisURL = url.parse(process.env.REDISCLOUD_URL);
+  redisPASS = redisURL.auth.split(':')[1];
+}
 
 // Set up the app using express
 const app = express();
 
-// Set up all the paths, resources, and libraries the app will need
 app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
 app.use(favicon(`${__dirname}/../hosted/img/logo.png`));
 app.use(compression());
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
 app.use(session({
   key: 'sessionid',
-  secret: 'DayByDay',
+  store: new RedisStore({
+    host: redisURL.hostname,
+    port: redisURL.port,
+    pass: redisPASS,
+  }),
+  secret: 'Domo Arigato',
   resave: true,
   saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+  },
 }));
-// Set up handlebars
 app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/../views`);
+app.disable('x-powered-by');
+app.use(cookieParser());
 
-// Use the route for the app
+app.use(csrf());
+app.use((err, req, res, next) => {
+  if (err.code !== 'EBADCSRFTOKEN') return next(err);
+
+  console.log('Missing CSRF Token');
+  return false;
+});
+
 router(app);
+
 
 // Set up the app to listen for the port type
 app.listen(port, (err) => {

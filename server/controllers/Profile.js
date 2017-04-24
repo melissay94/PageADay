@@ -10,12 +10,12 @@ const comicPage = (req, res) => {
       return res.status(400).json({ error: 'An error occured' });
     }
 
-    return res.render('app', { comics: docs });
+    return res.render('app', { csrfToken: req.csrfToken(), comics: docs });
   });
 };
 
 const makeComic = (req, res) => {
-  if (!req.body.name || !req.body.age) {
+  if (!req.body.name || !req.body.link) {
     return res.status(400).json({ error: 'Name and link required' });
   }
 
@@ -41,12 +41,27 @@ const makeComic = (req, res) => {
       return res.status(400).json({ error: 'Comic already added' });
     }
 
-    return res.status(400).json({ error: 'Something went wrong' });
+    return res.status(400).json({ error: 'Something went wrong. Damnit Paul' });
   });
 
   return comicPromise;
 };
 
+const getComics = (request, response) => {
+  const req = request;
+  const res = response;
+
+  return Comic.ComicModel.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'Something went wrong. Damnit Paul' });
+    }
+
+    return res.json({ comics: docs });
+  });
+};
+
 // Export function
 module.exports.comicPage = comicPage;
-module.exports.comic = makeComic;
+module.exports.makeComic = makeComic;
+module.exports.getComics = getComics;

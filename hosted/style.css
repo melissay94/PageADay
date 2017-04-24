@@ -1,60 +1,63 @@
 #header {
-	text-align: center;
-	background-color:  #7D6B95;
-}
-
-#login {
-	color:  darkblue;
-	background-color: #7D6B95; 
-	float: right;
-	font-size: 20px;
-	font-weight:  bold;
+    text-align: center;
+    background-color:  #7D6B95;
 }
 
 #header h1 {
-	font-family: "Carter One", cursive, sans-serif;
-	font-weight: bolder;	
-	font-size: 150px;
-	color: #DED8E5;
-	margin-top: 0px;
+    font-family: "Carter One", cursive, sans-serif;
+    font-weight: bolder;    
+    font-size: 150px;
+    color: #DED8E5;
+    margin-top: 0px;
 }
 
 #header p {
-	padding-top: 30px;
-	font-weight: bold;
-	font-size: 35px;
+    padding-top: 30px;
+    font-weight: bold;
+    font-size: 35px;
 }
 
 .description {
-	margin-left: 100px;
-	margin-right: 100px;
-	font-size: 20px;
-	width: 50%;
+    margin-left: 100px;
+    margin-right: 100px;
+    font-size: 20px;
+    width: 50%;
 }
 
 .description h3, .new-user h3 {
-	font-weight: bold;
-	font-size: 35px;
-	padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 35px;
+    padding-bottom: 10px;
 }
 
 .new-user {
-	background-color: #DED8E5;
-	padding:20px;
-	padding-left: 100px;
+    background-color: #DED8E5;
+    padding:20px;
+    padding-left: 100px;
 
-}
-
-.new-user h3 {
-	padding-left: 15px;
 }
 
 .new-user .btn {
-	color: #DED8E5;
-	background-color: #7D6B95;
-	font-family: "Carter One", cursive, sans-serif;
-	font-size: 20px;
-	margin-top: 10px;
-	float: right;
-	padding: 10px 30px 10px 30px;
+    color: #DED8E5;
+    background-color: #7D6B95;
+    font-family: "Carter One", cursive, sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    float: right;
+    padding: 10px 30px 10px 30px;
+}
+
+.new-user .nav {
+    padding: 5px;
+}
+
+.new-user .nav li, .new-user .nav a{
+    display: inline;
+    font-size: 20px;
+}
+
+#errorMessage {
+    font-weight: bold;
+    font-size: 20px;
+    color: darkred;
 }

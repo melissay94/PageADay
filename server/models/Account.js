@@ -1,11 +1,9 @@
-// Imports
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 
-mongoose.promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 let AccountModel = {};
-
 const iterations = 10000;
 const saltLength = 64;
 const keyLength = 64;
@@ -26,14 +24,14 @@ const AccountSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createdData: {
+  createdDate: {
     type: Date,
     default: Date.now,
   },
 });
 
 AccountSchema.statics.toAPI = doc => ({
-// _id built into my mongo document, guarunteed to be unique
+  // _id is built into your mongo document and is guaranteed to be unique
   username: doc.username,
   _id: doc._id,
 });
@@ -45,7 +43,6 @@ const validatePassword = (doc, password, callback) => {
     if (hash.toString('hex') !== pass) {
       return callback(false);
     }
-
     return callback(true);
   });
 };
@@ -65,23 +62,23 @@ AccountSchema.statics.generateHash = (password, callback) => {
 };
 
 AccountSchema.statics.authenticate = (username, password, callback) =>
-  AccountModel.findByUsername(username, (err, doc) => {
-    if (err) {
-      return callback(err);
+AccountModel.findByUsername(username, (err, doc) => {
+  if (err) {
+    return callback(err);
+  }
+
+  if (!doc) {
+    return callback();
+  }
+
+  return validatePassword(doc, password, (result) => {
+    if (result === true) {
+      return callback(null, doc);
     }
 
-    if (!doc) {
-      return callback();
-    }
-
-    return validatePassword(doc, password, (result) => {
-      if (result === true) {
-        return callback(null, doc);
-      }
-
-      return callback();
-    });
+    return callback();
   });
+});
 
 AccountModel = mongoose.model('Account', AccountSchema);
 
