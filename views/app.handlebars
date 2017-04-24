@@ -13,11 +13,20 @@
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body>
-  <nav><img id="logo" src="/assets/img/logo.png" alt="logo"/></a>
+  <nav class="navbar navbar-default">
+		<img id="logo" src="/assets/img/logo.png" alt="logo"/>
+		<h3>Welcome!</h3>
     <div class="navlink"><a href="/logout">Log out</a></div>
   </nav>
-  <h1>Welcome! Content to come.</h1>
-  <div id="addComic"></div>
+	<div id="comicForm" class="container">
+		<h3>Add New Comic to Library</h3>
+		<div id="addComic"></div>
+    <div class="errorMessage"></div>
+	</div>
+	<div id="library" class="container">
+		<h3>My Comic Library</h3>
+		<div id="comics"></div>
+	</div>
   <script src="/assets/bundle.js"></script>
 </body>
 </html>

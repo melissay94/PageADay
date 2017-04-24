@@ -53,7 +53,7 @@ const renderLogin = function() {
 	            </div>
 	            <div className="form-group row">
 	              <div  className="offset-sm-2 col-sm-4">
-					<input type="hidden" name="_csrf" value={this.props.csrf} />
+									<input type="hidden" name="_csrf" value={this.props.csrf} />
 	                <input className="formSubmit btn" type="submit" value="Start!" />            
 	              </div>
 	            </div>
