@@ -20,9 +20,9 @@ var handleComics = function handleComics(e) {
 	});
 
 	// Resetting submissions to blank after making a new link
-	undefined.name.value = '';
-	undefined.link.value = '';
-	undefined.review.value = '';
+	document.querySelector("#comicName").value = "";
+	document.querySelector("#comicLink").value = "";
+	document.querySelector("#comicReview").value = "";
 
 	return false;
 };
@@ -35,7 +35,6 @@ var handleDeletes = function handleDeletes(e) {
 
 // Renders the comic form for creating new entries
 var renderComicForm = function renderComicForm() {
-	var _this = this;
 
 	return React.createElement(
 		"form",
@@ -56,9 +55,7 @@ var renderComicForm = function renderComicForm() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("input", { id: "comicName", className: "form-control", ref: function ref(c) {
-						_this.name = c;
-					}, type: "text", name: "name", placeholder: "Comic Name" })
+				React.createElement("input", { id: "comicName", className: "form-control", type: "text", name: "name", placeholder: "Comic Name" })
 			)
 		),
 		React.createElement(
@@ -72,9 +69,7 @@ var renderComicForm = function renderComicForm() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("input", { id: "comicLink", className: "form-control", ref: function ref(c) {
-						_this.link = c;
-					}, type: "text", name: "link", placeholder: "Comic Link" })
+				React.createElement("input", { id: "comicLink", className: "form-control", type: "text", name: "link", placeholder: "Comic Link" })
 			)
 		),
 		React.createElement(
@@ -88,9 +83,7 @@ var renderComicForm = function renderComicForm() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("textarea", { id: "comicReview", className: "form-control", ref: function ref(c) {
-						_this.review = c;
-					}, name: "review", placeholder: "Your review here...", rows: "8" })
+				React.createElement("textarea", { id: "comicReview", className: "form-control", name: "review", placeholder: "Your review here...", rows: "8" })
 			)
 		),
 		React.createElement(
@@ -126,7 +119,7 @@ var renderComicList = function renderComicList() {
 			{ key: comic._id, className: "comic" },
 			React.createElement(
 				"h3",
-				{ className: "comicName" },
+				{ className: "name" },
 				React.createElement(
 					"a",
 					{ href: comic.link, target: "_blank" },
@@ -141,7 +134,7 @@ var renderComicList = function renderComicList() {
 			),
 			React.createElement(
 				"p",
-				{ className: "comicReview" },
+				{ className: "review" },
 				comic.review
 			)
 		);

@@ -51,7 +51,7 @@ ComicSchema.statics.findByOwner = (ownerId, callback) => {
     owner: convertId(ownerId),
   };
 
-  return ComicModel.find(search).select('name link').exec(callback);
+  return ComicModel.find(search).select('name link review').exec(callback);
 };
 
 ComicModel = mongoose.model('Comic', ComicSchema);

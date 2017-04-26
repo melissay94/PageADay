@@ -19,7 +19,7 @@ const router = require('./router.js');
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 // Set up database url with mongo
-const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost/ComicSaver';
 
 // Use mongo to print out an error if it occurs
 mongoose.connect(dbURL, (err) => {

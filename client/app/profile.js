@@ -18,10 +18,10 @@ const handleComics = (e) => {
 		comicRenderer.loadComicsFromServer();
 	});
 
-	// TO DO: Resetting submissions to blank after making a new link
-	this.name.value = '';
-	this.link.value = '';
-	this.review.value = '';
+	// Resetting submissions to blank after making a new link
+	document.querySelector("#comicName").value = "";
+	document.querySelector("#comicLink").value = "";
+	document.querySelector("#comicReview").value = "";
 
 	return false;
 };
@@ -46,19 +46,19 @@ const renderComicForm = function() {
 			<div className="form-group row">
 					<label htmlFor="name" className="col-md-2 col-form-label">Comic Name: </label>
 					<div className="col-md-10">
-						<input id="comicName" className="form-control" ref={(c)=>{this.name = c}} type="text" name="name" placeholder="Comic Name" />
+						<input id="comicName" className="form-control" type="text" name="name" placeholder="Comic Name" />
 					</div>
 			</div>
 			<div className="form-group row">
 					<label htmlFor="link" className="col-md-2 col-form-label">Comic Link: </label>
 					<div className="col-md-10">
-						<input id="comicLink" className="form-control" ref={(c)=>{this.link = c}} type="text" name="link" placeholder="Comic Link" />
+						<input id="comicLink" className="form-control" type="text" name="link" placeholder="Comic Link" />
 					</div>
 			</div>
 			<div className="form-group row">
 					<label htmlFor="review" className="col-md-2 col-form-label">Review: </label>
 					<div className="col-md-10">
-						<textarea id="comicReview" className="form-control" ref={(c)=>{this.review = c}} name="review" placeholder="Your review here..." rows="8"></textarea>
+						<textarea id="comicReview" className="form-control" name="review" placeholder="Your review here..." rows="8"></textarea>
 					</div>
 			</div>
 			<div className="form-group row">
@@ -84,9 +84,9 @@ const renderComicList = function() {
 	const comicNodes = this.state.data.map(function(comic) {
 		return (
 			<div key={comic._id} className="comic">
-				<h3 className="comicName"><a href={comic.link} target="_blank">{comic.name} </a></h3>
+				<h3 className="name"><a href={comic.link} target="_blank">{comic.name} </a></h3>
 				<button className="btn btn-default"><span className="glyphicon glyphicon-remove"></span></button>
-				<p className="comicReview">{comic.review}</p>
+				<p className="review">{comic.review}</p>
 			</div>
 		);
 	});
