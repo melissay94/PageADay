@@ -21,7 +21,7 @@ const makeComic = (req, res) => {
 
   const comicData = {
     name: req.body.name,
-    age: req.body.link,
+    link: req.body.link,
     review: req.body.review,
     owner: req.session.account._id,
   };

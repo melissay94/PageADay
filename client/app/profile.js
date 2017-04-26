@@ -3,6 +3,9 @@ let comicForm;
 let ComicFormClass;
 let ComicListClass;
 
+
+// Handles adding a comic to the user and overall db
+// TO DO: Only let you add a comic if its a new url
 const handleComics = (e) => {
 	e.preventDefault();
 
@@ -10,22 +13,32 @@ const handleComics = (e) => {
 		handleError("We need a name and link my dear");
 		return false;
 	}
-	
-	console.log("Got past step 1");
 
-	sendAjax('POST', $("#comicForm").attr("action"), $("#comicForm").serialize(), function() {
+	sendAjax('POST', $("#comicFormer").attr("action"), $("#comicFormer").serialize(), function() {
 		comicRenderer.loadComicsFromServer();
 	});
+
+	// TO DO: Resetting submissions to blank after making a new link
+	this.name.value = '';
+	this.link.value = '';
+	this.review.value = '';
 
 	return false;
 };
 
+// Handles deleting an entry to my code
+// TO DO: Make it do that
+const handleDeletes = (e) => {
+	e.preventDefault();
+
+};
+
+// Renders the comic form for creating new entries
 const renderComicForm = function() {
 
 	return (
-		<form id="comicForm"
+		<form id="comicFormer" name="comicFormer"
 				onSubmit={this.handleSubmit}
-				name="comicForm"
 				action="/profile"
 				method="POST"
 				className="comicForm"
@@ -33,19 +46,19 @@ const renderComicForm = function() {
 			<div className="form-group row">
 					<label htmlFor="name" className="col-md-2 col-form-label">Comic Name: </label>
 					<div className="col-md-10">
-						<input id="comicName" className="form-control" type="text" name="name" placeholder="Comic Name" />
+						<input id="comicName" className="form-control" ref={(c)=>{this.name = c}} type="text" name="name" placeholder="Comic Name" />
 					</div>
 			</div>
 			<div className="form-group row">
 					<label htmlFor="link" className="col-md-2 col-form-label">Comic Link: </label>
 					<div className="col-md-10">
-						<input id="comicLink" className="form-control" type="text" name="link" placeholder="Comic Link" />
+						<input id="comicLink" className="form-control" ref={(c)=>{this.link = c}} type="text" name="link" placeholder="Comic Link" />
 					</div>
 			</div>
 			<div className="form-group row">
 					<label htmlFor="review" className="col-md-2 col-form-label">Review: </label>
 					<div className="col-md-10">
-						<textarea id="comicReview" className="form-control" name="review" placeholder="Your review here..." rows="8"></textarea>
+						<textarea id="comicReview" className="form-control" ref={(c)=>{this.review = c}} name="review" placeholder="Your review here..." rows="8"></textarea>
 					</div>
 			</div>
 			<div className="form-group row">
@@ -58,6 +71,7 @@ const renderComicForm = function() {
 	);
 };
 
+// Renders the list of comics the user has saved
 const renderComicList = function() {
 	if(this.state.data.length === 0) {
 		return (
@@ -70,7 +84,8 @@ const renderComicList = function() {
 	const comicNodes = this.state.data.map(function(comic) {
 		return (
 			<div key={comic._id} className="comic">
-				<h3 className="comicName"><a href={comic.link}>Name: {comic.name} </a></h3>
+				<h3 className="comicName"><a href={comic.link} target="_blank">{comic.name} </a></h3>
+				<button className="btn btn-default"><span className="glyphicon glyphicon-remove"></span></button>
 				<p className="comicReview">{comic.review}</p>
 			</div>
 		);
@@ -83,6 +98,7 @@ const renderComicList = function() {
 	);
 };
 
+// Sets up the page with all components
 const setup = function(csrf) {
 
 	ComicFormClass = React.createClass({
@@ -114,6 +130,7 @@ const setup = function(csrf) {
 	);
 };
 
+// Gets a csrf token to be used
 const getToken = () => {
 	sendAjax('GET', '/getToken', null, (result) => {
 		setup(result.csrfToken);

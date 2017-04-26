@@ -5,6 +5,8 @@ var comicForm = void 0;
 var ComicFormClass = void 0;
 var ComicListClass = void 0;
 
+// Handles adding a comic to the user and overall db
+// TO DO: Only let you add a comic if its a new url
 var handleComics = function handleComics(e) {
 	e.preventDefault();
 
@@ -13,24 +15,32 @@ var handleComics = function handleComics(e) {
 		return false;
 	}
 
-	console.log("Got past step 1");
-
-	sendAjax('POST', $("#comicForm").attr("action"), $("#comicForm").serialize(), function () {
-		console.log("I'm being called");
+	sendAjax('POST', $("#comicFormer").attr("action"), $("#comicFormer").serialize(), function () {
 		comicRenderer.loadComicsFromServer();
-		console.log("Got past step 2");
 	});
+
+	// Resetting submissions to blank after making a new link
+	undefined.name.value = '';
+	undefined.link.value = '';
+	undefined.review.value = '';
 
 	return false;
 };
 
+// Handles deleting an entry to my code
+// TO DO: Make it do that
+var handleDeletes = function handleDeletes(e) {
+	e.preventDefault();
+};
+
+// Renders the comic form for creating new entries
 var renderComicForm = function renderComicForm() {
+	var _this = this;
 
 	return React.createElement(
 		"form",
-		{ id: "comicForm",
+		{ id: "comicFormer", name: "comicFormer",
 			onSubmit: this.handleSubmit,
-			name: "comicForm",
 			action: "/profile",
 			method: "POST",
 			className: "comicForm"
@@ -46,7 +56,9 @@ var renderComicForm = function renderComicForm() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("input", { id: "comicName", className: "form-control", type: "text", name: "name", placeholder: "Comic Name" })
+				React.createElement("input", { id: "comicName", className: "form-control", ref: function ref(c) {
+						_this.name = c;
+					}, type: "text", name: "name", placeholder: "Comic Name" })
 			)
 		),
 		React.createElement(
@@ -60,7 +72,9 @@ var renderComicForm = function renderComicForm() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("input", { id: "comicLink", className: "form-control", type: "text", name: "link", placeholder: "Comic Link" })
+				React.createElement("input", { id: "comicLink", className: "form-control", ref: function ref(c) {
+						_this.link = c;
+					}, type: "text", name: "link", placeholder: "Comic Link" })
 			)
 		),
 		React.createElement(
@@ -74,7 +88,9 @@ var renderComicForm = function renderComicForm() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("textarea", { id: "comicReview", className: "form-control", name: "review", placeholder: "Your review here...", rows: "8" })
+				React.createElement("textarea", { id: "comicReview", className: "form-control", ref: function ref(c) {
+						_this.review = c;
+					}, name: "review", placeholder: "Your review here...", rows: "8" })
 			)
 		),
 		React.createElement(
@@ -90,13 +106,14 @@ var renderComicForm = function renderComicForm() {
 	);
 };
 
+// Renders the list of comics the user has saved
 var renderComicList = function renderComicList() {
 	if (this.state.data.length === 0) {
 		return React.createElement(
 			"div",
 			{ className: "comicList" },
 			React.createElement(
-				"h3",
+				"h4",
 				{ className: "emptyLibrary" },
 				"You have no comics yet"
 			)
@@ -112,11 +129,15 @@ var renderComicList = function renderComicList() {
 				{ className: "comicName" },
 				React.createElement(
 					"a",
-					{ href: comic.link },
-					"Name: ",
+					{ href: comic.link, target: "_blank" },
 					comic.name,
 					" "
 				)
+			),
+			React.createElement(
+				"button",
+				{ className: "btn btn-default" },
+				React.createElement("span", { className: "glyphicon glyphicon-remove" })
 			),
 			React.createElement(
 				"p",
@@ -133,6 +154,7 @@ var renderComicList = function renderComicList() {
 	);
 };
 
+// Sets up the page with all components
 var setup = function setup(csrf) {
 
 	ComicFormClass = React.createClass({
@@ -148,7 +170,6 @@ var setup = function setup(csrf) {
 		loadComicsFromServer: function loadComicsFromServer() {
 			sendAjax('GET', '/getComics', null, function (data) {
 				this.setState({ data: data.comics });
-				console.log("Step 2: ", data);
 			}.bind(this));
 		},
 		getInitialState: function getInitialState() {
@@ -165,6 +186,7 @@ var setup = function setup(csrf) {
 	comicRenderer = ReactDOM.render(React.createElement(ComicListClass, null), document.querySelector("#comics"));
 };
 
+// Gets a csrf token to be used
 var getToken = function getToken() {
 	sendAjax('GET', '/getToken', null, function (result) {
 		setup(result.csrfToken);

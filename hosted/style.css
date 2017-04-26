@@ -99,6 +99,10 @@
 	padding: 10px;
 }
 
+#library h3 {
+    display: inline-block;
+}
+
 #addComic {
 	padding: 10px;
 }
