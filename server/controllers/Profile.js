@@ -3,6 +3,7 @@ const models = require('../models');
 
 const Comic = models.Comic;
 
+// Renders the page for the users comic library
 const comicPage = (req, res) => {
   Comic.ComicModel.findByOwner(req.session.account._id, (err, docs) => {
     if (err) {
@@ -14,6 +15,7 @@ const comicPage = (req, res) => {
   });
 };
 
+// Creates a new comic entry to add to the server
 const makeComic = (req, res) => {
   if (!req.body.name || !req.body.link) {
     return res.status(400).json({ error: 'Name and link required' });
@@ -47,6 +49,7 @@ const makeComic = (req, res) => {
   return comicPromise;
 };
 
+// Gets all comic entries from the server
 const getComics = (request, response) => {
   const req = request;
   const res = response;
