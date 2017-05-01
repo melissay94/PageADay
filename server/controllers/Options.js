@@ -21,8 +21,8 @@ const changePassword = (request, response) => {
   }
 
   return Account.AccountModel.authenticate(req.body.username, req.body.old_pass, (err, account) => {
-    if (err) {
-      return res.status(400).json({ error: 'Check those credentials again' });
+    if (err || !account) {
+      return res.status(401).json({ error: 'Check those credentials again' });
     }
 
     const updateAccount = account;

@@ -10,6 +10,16 @@ var handleChange = function handleChange(e) {
 	}
 
 	sendAjax('POST', $('#changeForm').attr("action"), $("#changeForm").serialize());
+
+	// Reset all the fields
+	document.querySelector("#user").value = "";
+	document.querySelector("#old_pass").value = "";
+	document.querySelector("#new_pass").value = "";
+
+	// Using handleError to let them know it succeeded
+	handleError("Password has been changed");
+
+	return false;
 };
 
 // Set up form
@@ -46,7 +56,7 @@ var renderChangePass = function renderChangePass() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("input", { id: "pass", className: "form-control", type: "password", name: "old_pass", placeholder: "Current Password" })
+				React.createElement("input", { id: "old_pass", className: "form-control", type: "password", name: "old_pass", placeholder: "Current Password" })
 			)
 		),
 		React.createElement(
@@ -60,7 +70,7 @@ var renderChangePass = function renderChangePass() {
 			React.createElement(
 				"div",
 				{ className: "col-md-10" },
-				React.createElement("input", { id: "pass2", className: "form-control", type: "password", name: "new_pass", placeholder: "New Password" })
+				React.createElement("input", { id: "new_pass", className: "form-control", type: "password", name: "new_pass", placeholder: "New Password" })
 			)
 		),
 		React.createElement(

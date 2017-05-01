@@ -22,15 +22,30 @@
       <div class="navlink"><a href="/logout">Log out</a></div>
     </div>
   </nav>
-	<div id="comicForm" class="container">
-		<h3>Add New Comic to Library</h3>
-		<div id="addComic"></div>
-    <div class="errorMessage"></div>
-	</div>
-	<div id="library" class="container">
-		<h3>My Comic Library</h3>
-		<div id="comics"></div>
-	</div>
+  <div class="row">
+    <div class="col-md-9">
+      <div id="explanation" class="container">
+        <h3>What is Page A Day??</h3>
+        <p>Page a Day is a portal to help you save all those webcomics you know and love, so you never forget the link again. You can also browse our archives page to see what else our other users are reading about. Go ahead and add a web comic below to get started!</p>
+      </div> 
+      <div id="comicForm" class="container">
+        <h3>Add New Comic to Library</h3>
+        <div id="addComic"></div>
+        <div class="errorMessage"></div>
+      </div>
+      <div id="library" class="container">
+        <h3>My Comic Library</h3>
+        <div id="comics"></div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="friends">
+        <h3>My Friends List</h3>
+        <p>Here you can see your friends and checkout their reviews for different comics</p>
+        <div id="friendsList"></div>
+      </div>
+    </div>
+  </div>
   <script src="/assets/userBundle.js"></script>
 </body>
 </html>

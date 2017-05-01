@@ -68,7 +68,7 @@
 }
 
 .navbar img {
-	width: 50px;
+	width: 110px;
 	display: inline-block;
 	float: left;
 	margin-top: 15px;
@@ -97,11 +97,22 @@
     border-radius: 5px;
 }
 
-#comicForm, #library, #changePass {
+#explanation {
+    padding-bottom: 30px;
+}
+
+#explanation p, #friends p, #library p {
+    font-size: 18px;
+    font-style: italic;
+    width: 90%;
+    margin-left: 20px;
+}
+
+#explanation, #comicForm, #friends, #library, #changePass {
 	background-color: #DED8E5;
 }
 
-#comicForm h3, #library h3, #changePass h3 {
+#explanation h3, #comicForm h3, #friends h3, #library h3, #changePass h3 {
 	font-weight: bold;
 	padding: 10px;
 }

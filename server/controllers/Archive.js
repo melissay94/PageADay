@@ -30,7 +30,7 @@ const makeArchive = (req, res) => {
     console.log(err);
 
     if (err.code === 11000) {
-      return res.status(400).json({ error: 'Archive already exists' });
+      return res.status(401).json({ error: 'Archive already exists' });
     }
 
     return res.status(400).json({ error: 'Something went wrong, damnit Paul' });

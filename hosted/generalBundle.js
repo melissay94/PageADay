@@ -9,6 +9,11 @@ var handleAddComic = function handleAddComic(e, comic) {
 	console.log(comic);
 
 	sendAjax('POST', "/profile", comic);
+
+	// Have it let the user know it was added
+	handleError("You've added a new comic to your library");
+
+	return false;
 };
 
 // Renders the list from the archives

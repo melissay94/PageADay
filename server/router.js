@@ -15,6 +15,7 @@ const router = (app) => {
   app.get('/archive', mid.requiresLogin, controllers.Archive.archivePage);
   app.get('/getArchives', mid.requiresLogin, controllers.Archive.getArchives);
   app.get('/options', mid.requiresLogin, controllers.Options.optionsPage);
+  app.get('/getFriends', mid.requiresLogin, controllers.Friends.getFriends);
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
   app.post('/profile', mid.requiresLogin, controllers.Comic.makeComic);

@@ -9,6 +9,15 @@ const handleChange = (e) => {
 
 	sendAjax('POST', $('#changeForm').attr("action"), $("#changeForm").serialize());
 
+	// Reset all the fields
+	document.querySelector("#user").value = "";
+	document.querySelector("#old_pass").value = "";
+	document.querySelector("#new_pass").value = "";
+
+	// Using handleError to let them know it succeeded
+	handleError("Password has been changed");
+
+	return false;
 };
 
 // Set up form
@@ -28,13 +37,13 @@ const renderChangePass = function () {
 	            <div className="form-group row">
 	              <label htmlFor="old_pass" className="col-md-2 col-form-label">Current Password: </label>
 	              <div className="col-md-10">
-	                <input id="pass" className="form-control" type="password" name="old_pass" placeholder="Current Password"/>
+	                <input id="old_pass" className="form-control" type="password" name="old_pass" placeholder="Current Password"/>
 	              </div>
 	            </div>
 	            <div className="form-group row">
 	              <label htmlFor="new_pass" className="col-md-2 col-form-label">New Password: </label>
 	              <div className="col-md-10">
-	                <input id="pass2" className="form-control" type="password" name="new_pass" placeholder="New Password"/>
+	                <input id="new_pass" className="form-control" type="password" name="new_pass" placeholder="New Password"/>
 	              </div>
 	            </div>
 	            <div className="form-group row">

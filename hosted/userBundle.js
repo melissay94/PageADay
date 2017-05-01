@@ -27,6 +27,9 @@ var handleComics = function handleComics(e) {
 	document.querySelector("#comicLink").value = "";
 	document.querySelector("#comicReview").value = "";
 
+	// Just using handleError to let them know if succeeded
+	handleError("Your new entry has been added.");
+
 	return false;
 };
 
