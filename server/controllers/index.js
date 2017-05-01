@@ -3,4 +3,5 @@
 module.exports.Account = require('./Account.js');
 module.exports.Comic = require('./Profile.js');
 module.exports.Options = require('./Options.js');
+module.exports.Archive = require('./Archive.js');
 

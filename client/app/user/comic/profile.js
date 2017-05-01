@@ -5,7 +5,6 @@ let ComicListClass;
 
 
 // Handles adding a comic to the user and overall db
-// TO DO: Only let you add a comic if its a new url
 const handleComics = (e) => {
 	e.preventDefault();
 
@@ -14,9 +13,13 @@ const handleComics = (e) => {
 		return false;
 	}
 
+	console.log($("#comicFormer").serialize());
+
 	sendAjax('POST', $("#comicFormer").attr("action"), $("#comicFormer").serialize(), function() {
 		comicRenderer.loadComicsFromServer();
 	});
+
+	sendAjax('POST', '/archive', $("#comicFormer").serialize());
 
 	// Resetting submissions to blank after making a new link
 	document.querySelector("#comicName").value = "";
@@ -27,7 +30,6 @@ const handleComics = (e) => {
 };
 
 // Handles deleting an entry to my code
-// TO DO: Make it do that
 const handleDeletes = (e) => {
 	e.preventDefault();
 
@@ -130,13 +132,3 @@ const setup = function(csrf) {
 	);
 };
 
-// Gets a csrf token to be used
-const getToken = () => {
-	sendAjax('GET', '/getToken', null, (result) => {
-		setup(result.csrfToken);
-	});
-}
-
-$(document).ready(function() {
-	getToken();
-});

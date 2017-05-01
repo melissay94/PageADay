@@ -37,7 +37,7 @@
 
 }
 
-.new-user .btn, #addComic .btn {
+.new-user .btn, #addComic .btn, #changeArea .btn {
     color: #DED8E5;
     background-color: #7D6B95;
     font-family: "Carter One", cursive, sans-serif;
@@ -83,18 +83,25 @@
 	font-size: 45px;
 }
 
-.navbar .navlink {
-	display: inline-block;
-	float: right;
-	margin-top: 10px;
-	margin-right: 10px;
+.navbar .navto {
+    float: right;
 }
 
-#comicForm, #library {
+.navbar .navlink {
+    background-color: #DED8E5;
+    color: darkgrey; 
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#comicForm, #library, #changePass {
 	background-color: #DED8E5;
 }
 
-#comicForm h3, #library h3 {
+#comicForm h3, #library h3, #changePass h3 {
 	font-weight: bold;
 	padding: 10px;
 }
@@ -129,13 +136,18 @@
 }
 
 .comic .btn-default {
-	  background: none;
+	background: none;
     border: none;
     color: #7d6b95;
     padding: 0px
 }
 
-.comic .glyphicon-remove {
+.archive .btn-default {
+    background-color: #7D6B95;
+    color: white; 
+}
+
+.comic .glyphicon-remove, .archive .glyphicon-plus {
 	font-size: 18px;
 }
 

@@ -6,8 +6,6 @@ const handleLogin = (e) => {
 		return false;
 	}
 
-	console.log($("#loginForm").serialize());
-
 	sendAjax('POST', $("#loginForm").attr("action"), $("#loginForm").serialize(), redirect);
 
 	return false;
@@ -146,13 +144,3 @@ const setup = function(csrf) {
 
 	createSignupWindow(csrf);
 };
-
-const getToken = () => {
-	sendAjax('GET', '/getToken', null, (result) => {
-		setup(result.csrfToken);
-	});
-};
-
-$(document).ready(function() {
-	getToken();
-});

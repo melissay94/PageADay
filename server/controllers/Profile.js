@@ -10,7 +10,6 @@ const comicPage = (req, res) => {
       console.log(err);
       return res.status(400).json({ error: 'An error occured' });
     }
-
     return res.render('app', { csrfToken: req.csrfToken(), comics: docs });
   });
 };
@@ -64,7 +63,23 @@ const getComics = (request, response) => {
   });
 };
 
+// Get a comic to delete it's entry
+const deleteEntry = (request, response) => {
+  const req = request;
+  const res = response;
+
+  return Comic.ComicModel.findByOwner(req.session.account._id, (err, docs) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'Something went wrong. Damnit Paul' });
+    }
+
+    return docs;
+  });
+};
+
 // Export function
 module.exports.comicPage = comicPage;
 module.exports.makeComic = makeComic;
 module.exports.getComics = getComics;
+module.exports.deleteEntry = deleteEntry;

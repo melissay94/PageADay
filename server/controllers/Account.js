@@ -1,5 +1,4 @@
 // Set up account controller
-
 const models = require('../models');
 
 const Account = models.Account;

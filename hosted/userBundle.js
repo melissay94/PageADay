@@ -1,57 +1,4 @@
 "use strict";
-"use strict";
-
-var archiveRenderer = void 0;
-var ArchiveListClass = void 0;
-
-// Renders the list from the archives
-var renderArchiveList = function renderArchiveList() {
-	if (this.state.data.length === 0) {
-		return React.createElement(
-			"div",
-			{ className: "archiveList" },
-			React.createElement(
-				"h4",
-				{ className: "emptyLibrary" },
-				"There is no archive yet"
-			)
-		);
-	}
-
-	var archiveNodes = this.state.data.map(function (comic) {
-		return React.createElement(
-			"div",
-			{ key: comic.name, className: "archive" },
-			React.createElement(
-				"h3",
-				{ className: "name" },
-				React.createElement(
-					"a",
-					{ href: comic.link, target: "_blank" },
-					comic.name,
-					" "
-				)
-			),
-			React.createElement(
-				"button",
-				{ className: "btn btn-default" },
-				React.createElement("span", { className: "glyphicon glyphicon-remove" })
-			),
-			React.createElement(
-				"p",
-				{ className: "review" },
-				comic.review
-			)
-		);
-	});
-
-	return React.createElement(
-		"div",
-		{ className: "archiveList" },
-		archiveNodes
-	);
-};
-"use strict";
 
 var comicRenderer = void 0;
 var comicForm = void 0;
@@ -66,6 +13,8 @@ var handleComics = function handleComics(e) {
 		handleError("We need a name and link my dear");
 		return false;
 	}
+
+	console.log($("#comicFormer").serialize());
 
 	sendAjax('POST', $("#comicFormer").attr("action"), $("#comicFormer").serialize(), function () {
 		comicRenderer.loadComicsFromServer();
@@ -227,40 +176,10 @@ var setup = function setup(csrf) {
 		render: renderComicList
 	});
 
-	ArchiveListClass = React.createClass({
-		displayName: "ArchiveListClass",
-
-		loadArchiveFromServer: function loadArchiveFromServer() {
-			sendAjax('GET', '/getArchives', null, function (data) {
-				this.setState({ data: data.archives });
-			}.bind(this));
-		},
-		getInitialState: function getInitialState() {
-			return { data: [] };
-		},
-		componentDidMount: function componentDidMount() {
-			this.loadArchiveFromServer();
-		},
-		render: renderArchiveList
-	});
-
 	comicForm = ReactDOM.render(React.createElement(ComicFormClass, { csrf: csrf }), document.querySelector('#addComic'));
 
 	comicRenderer = ReactDOM.render(React.createElement(ComicListClass, null), document.querySelector("#comics"));
-
-	archiveRenderer = ReactDOM.render(React.createElement(ArchiveListClass, null), document.querySelector("#archives"));
 };
-
-// Gets a csrf token to be used
-var getToken = function getToken() {
-	sendAjax('GET', '/getToken', null, function (result) {
-		setup(result.csrfToken);
-	});
-};
-
-$(document).ready(function () {
-	getToken();
-});
 "use strict";
 
 var handleError = function handleError(message) {
@@ -285,3 +204,14 @@ var sendAjax = function sendAjax(type, action, data, success) {
 		}
 	});
 };
+
+// Gets a csrf token to be used
+var getToken = function getToken() {
+	sendAjax('GET', '/getToken', null, function (result) {
+		setup(result.csrfToken);
+	});
+};
+
+$(document).ready(function () {
+	getToken();
+});

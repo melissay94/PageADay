@@ -23,9 +23,6 @@ const ArchiveSchema = new mongoose.Schema({
     trim: true,
     set: setLink,
   },
-  users: [
-    { type: mongoose.Schema.ObjectId, required: true, ref: 'Account' },
-  ],
 });
 
 ArchiveSchema.statics.toAPI = doc => ({
@@ -33,13 +30,7 @@ ArchiveSchema.statics.toAPI = doc => ({
   link: doc.link,
 });
 
-ArchiveSchema.statics.findByLink = (link, callback) => {
-  const search = {
-    archiveLink: link,
-  };
-
-  return ArchiveModel.find(search).select('name link users').exec(callback);
-};
+ArchiveSchema.statics.getData = callback => ArchiveModel.find().select('name link').exec(callback);
 
 ArchiveModel = mongoose.model('Archive', ArchiveSchema);
 

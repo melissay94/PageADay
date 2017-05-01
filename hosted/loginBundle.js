@@ -8,8 +8,6 @@ var handleLogin = function handleLogin(e) {
 		return false;
 	}
 
-	console.log($("#loginForm").serialize());
-
 	sendAjax('POST', $("#loginForm").attr("action"), $("#loginForm").serialize(), redirect);
 
 	return false;
@@ -206,16 +204,6 @@ var setup = function setup(csrf) {
 
 	createSignupWindow(csrf);
 };
-
-var getToken = function getToken() {
-	sendAjax('GET', '/getToken', null, function (result) {
-		setup(result.csrfToken);
-	});
-};
-
-$(document).ready(function () {
-	getToken();
-});
 "use strict";
 
 var handleError = function handleError(message) {
@@ -240,3 +228,14 @@ var sendAjax = function sendAjax(type, action, data, success) {
 		}
 	});
 };
+
+// Gets a csrf token to be used
+var getToken = function getToken() {
+	sendAjax('GET', '/getToken', null, function (result) {
+		setup(result.csrfToken);
+	});
+};
+
+$(document).ready(function () {
+	getToken();
+});
