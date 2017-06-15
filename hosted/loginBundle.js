@@ -53,12 +53,12 @@ var renderLogin = function renderLogin() {
 				{ className: 'form-group row' },
 				React.createElement(
 					'label',
-					{ htmlFor: 'username', className: 'col-sm-1 col-form-label' },
+					{ htmlFor: 'username', className: 'col-sm-2 col-form-label' },
 					'Username: '
 				),
 				React.createElement(
 					'div',
-					{ className: 'col-sm-3' },
+					{ className: 'col-sm-8' },
 					React.createElement('input', { id: 'user', className: 'form-control', type: 'text', name: 'username', placeholder: 'username' })
 				)
 			),
@@ -67,18 +67,18 @@ var renderLogin = function renderLogin() {
 				{ className: 'form-group row' },
 				React.createElement(
 					'label',
-					{ htmlFor: 'pass', className: 'col-sm-1 col-form-label' },
+					{ htmlFor: 'pass', className: 'col-sm-2 col-form-label' },
 					'Password: '
 				),
 				React.createElement(
 					'div',
-					{ className: 'col-sm-3' },
+					{ className: 'col-sm-8' },
 					React.createElement('input', { id: 'pass', className: 'form-control', type: 'password', name: 'pass', placeholder: 'password' })
 				)
 			),
 			React.createElement(
 				'div',
-				{ className: 'form-group row' },
+				{ className: 'form-group row enterbtn' },
 				React.createElement(
 					'div',
 					{ className: 'offset-sm-2 col-sm-4' },
@@ -111,12 +111,12 @@ var renderSignup = function renderSignup() {
 				{ className: 'form-group row' },
 				React.createElement(
 					'label',
-					{ htmlFor: 'username', className: 'col-sm-1 col-form-label' },
+					{ htmlFor: 'username', className: 'col-sm-2 col-form-label' },
 					'Username: '
 				),
 				React.createElement(
 					'div',
-					{ className: 'col-sm-3' },
+					{ className: 'col-sm-8' },
 					React.createElement('input', { id: 'user', className: 'form-control', type: 'text', name: 'username', placeholder: 'username' })
 				)
 			),
@@ -125,12 +125,12 @@ var renderSignup = function renderSignup() {
 				{ className: 'form-group row' },
 				React.createElement(
 					'label',
-					{ htmlFor: 'pass', className: 'col-sm-1 col-form-label' },
+					{ htmlFor: 'pass', className: 'col-sm-2 col-form-label' },
 					'Password: '
 				),
 				React.createElement(
 					'div',
-					{ className: 'col-sm-3' },
+					{ className: 'col-sm-8' },
 					React.createElement('input', { id: 'pass', className: 'form-control', type: 'password', name: 'pass', placeholder: 'password' })
 				)
 			),
@@ -139,18 +139,18 @@ var renderSignup = function renderSignup() {
 				{ className: 'form-group row' },
 				React.createElement(
 					'label',
-					{ htmlFor: 'pass2', className: 'col-sm-1 col-form-label' },
-					'Password Again: '
+					{ htmlFor: 'pass2', className: 'col-sm-2 col-form-label' },
+					'Retype: '
 				),
 				React.createElement(
 					'div',
-					{ className: 'col-sm-3' },
+					{ className: 'col-sm-8' },
 					React.createElement('input', { id: 'pass2', className: 'form-control', type: 'password', name: 'pass2', placeholder: 'retype password' })
 				)
 			),
 			React.createElement(
 				'div',
-				{ className: 'form-group row' },
+				{ className: 'form-group row enterbtn' },
 				React.createElement(
 					'div',
 					{ className: 'offset-sm-2 col-sm-4' },

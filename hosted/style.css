@@ -1,13 +1,14 @@
 #header {
     text-align: center;
-    background-color:  #7D6B95;
+    background: url("img/bg_page.jpg") no-repeat center;
+    background-size: cover;
 }
 
 #header h1 {
     font-family: "Carter One", cursive, sans-serif;
     font-weight: bolder;    
     font-size: 150px;
-    color: #DED8E5;
+    color: #222;
     margin-top: 0px;
 }
 
@@ -15,6 +16,10 @@
     padding-top: 30px;
     font-weight: bold;
     font-size: 35px;
+}
+
+#intro.row {
+    margin: 0px;
 }
 
 .description {
@@ -33,9 +38,31 @@
 .new-user {
     background-color: #DED8E5;
     padding:20px;
-    padding-left: 100px;
+    padding-left: 40px;
 
 }
+
+@media screen and (max-width: 1200px) {
+    .new-user {
+        margin-bottom: -2px;
+        width: 100%;
+        padding-bottom: 85px;
+
+    }
+
+    .description {
+        width: 100%;
+        margin: 0px;
+        padding-top: 20px;
+        padding-bottom: 85px;
+        text-align: center;
+    }
+}
+
+.new-user .enterbtn {
+    float: right;
+}
+
 
 .new-user .btn, #addComic .btn, #changeArea .btn {
     color: #DED8E5;

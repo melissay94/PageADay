@@ -40,18 +40,18 @@ const renderLogin = function() {
 				method="POST" 
 				className="mainForm">
 	            <div className="form-group row">
-	              <label htmlFor="username" className="col-sm-1 col-form-label">Username: </label>
-	              <div className="col-sm-3">
+	              <label htmlFor="username" className="col-sm-2 col-form-label">Username: </label>
+	              <div className="col-sm-8">
 	                <input id="user" className="form-control" type="text" name="username" placeholder="username"/>
 	              </div>
 	            </div>
 	            <div className="form-group row">
-	              <label htmlFor="pass" className="col-sm-1 col-form-label">Password: </label>
-	              <div className="col-sm-3">
+	              <label htmlFor="pass" className="col-sm-2 col-form-label">Password: </label>
+	              <div className="col-sm-8">
 	                <input id="pass" className="form-control" type="password" name="pass" placeholder="password"/>
 	              </div>
 	            </div>
-	            <div className="form-group row">
+	            <div className="form-group row enterbtn">
 	              <div  className="offset-sm-2 col-sm-4">
 									<input type="hidden" name="_csrf" value={this.props.csrf} />
 	                <input className="formSubmit btn" type="submit" value="Start!" />            
@@ -72,24 +72,24 @@ const renderSignup = function() {
 				method="POST" 
 				className="mainForm">
 	            <div className="form-group row">
-	              <label htmlFor="username" className="col-sm-1 col-form-label">Username: </label>
-	              <div className="col-sm-3">
+	              <label htmlFor="username" className="col-sm-2 col-form-label">Username: </label>
+	              <div className="col-sm-8">
 	                <input id="user" className="form-control" type="text" name="username" placeholder="username"/>
 	              </div>
 	            </div>
 	            <div className="form-group row">
-	              <label htmlFor="pass" className="col-sm-1 col-form-label">Password: </label>
-	              <div className="col-sm-3">
+	              <label htmlFor="pass" className="col-sm-2 col-form-label">Password: </label>
+	              <div className="col-sm-8">
 	                <input id="pass" className="form-control" type="password" name="pass" placeholder="password"/>
 	              </div>
 	            </div>
 	            <div className="form-group row">
-	              <label htmlFor="pass2" className="col-sm-1 col-form-label">Password Again: </label>
-	              <div className="col-sm-3">
+	              <label htmlFor="pass2" className="col-sm-2 col-form-label">Retype: </label>
+	              <div className="col-sm-8">
 	                <input id="pass2" className="form-control" type="password" name="pass2" placeholder="retype password"/>
 	              </div>
 	            </div>
-	            <div className="form-group row">
+	            <div className="form-group row enterbtn">
 	              <div  className="offset-sm-2 col-sm-4">
 					<input type="hidden" name="_csrf" value={this.props.csrf} />
 	                <input className="formSubmit btn" type="submit" value="Start!" />            
