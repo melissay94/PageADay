@@ -13,13 +13,19 @@
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body>
+  <div class="jumbotron" id="userHeader">
+    <img id="logo" src="/assets/img/logo.png" alt="logo"/>
+    <h3>Your Account</h3>
+  </div>
   <nav class="navbar navbar-default">
-		<img id="logo" src="/assets/img/logo.png" alt="logo"/>
-		<h3>Welcome!</h3>
-    <div class="navto">
-      <div class="navlink"><a href="/profile">My Library</a></div>
-      <div class="navlink"><a href="/archive">Archive</a></div>
-      <div class="navlink"><a href="/logout">Log out</a></div>
+    <div class="container">
+      <div id="archiveNav">
+        <ul class="nav navbar-nav">
+          <li><a href="/profile">My Shelf</a></li>
+          <li><a href="/archives">The Library</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
   <div id="changePass" class="container">

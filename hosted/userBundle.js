@@ -135,6 +135,11 @@ var renderComicList = function renderComicList() {
 			React.createElement(
 				"button",
 				{ className: "btn btn-default" },
+				React.createElement("span", { className: "glyphicon glyphicon-pencil" })
+			),
+			React.createElement(
+				"button",
+				{ className: "btn btn-default" },
 				React.createElement("span", { className: "glyphicon glyphicon-remove" })
 			),
 			React.createElement(

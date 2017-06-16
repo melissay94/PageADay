@@ -13,17 +13,23 @@
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body>
+  <div class="jumbotron" id="userHeader">
+    <img id="logo" src="/assets/img/logo.png" alt="logo"/>
+    <h3>The Library</h3>
+  </div>
   <nav class="navbar navbar-default">
-		<img id="logo" src="/assets/img/logo.png" alt="logo"/>
-		<h3>Welcome!</h3>
-    <div class="navto">
-      <div class="navlink"><a href="/profile">My Library</a></div>
-      <div class="navlink"><a href="/options">Account</a></div>
-      <div class="navlink"><a href="/logout">Log out</a></div>
+    <div class="container">
+      <div id="archiveNav">
+        <ul class="nav navbar-nav">
+          <li><a href="/profile">My Shelf</a></li>
+          <li><a href="/options">Account</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
-	<div id="library" class="container">
-		<h3>Page A Day Archives</h3>
+	<div id="mainlibrary" class="container">
+		<h3>Page A Day Library</h3>
     <p> Our Page A Day archives where we pool together all user web comic links so others can see what's being read by others and find new comics!</p>
 		<div id="archives"></div>
     <div class="errorMessage"></div>

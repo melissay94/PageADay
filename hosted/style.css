@@ -89,103 +89,132 @@
     color: darkred;
 }
 
-.navbar-default{
-	background-color: #7D6B95;
-	padding-bottom: 10px;
+#userHeader.jumbotron {
+    background: url("img/bg_page.jpg") no-repeat center;
+    background-size: cover;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-bottom: 0px;
 }
 
-.navbar img {
+#userHeader.jumbotron img {
 	width: 110px;
 	display: inline-block;
-	float: left;
-	margin-top: 15px;
+    background-color: #7D6B95;
+    border:2px solid #fff;
+    border-radius: 50%;
 }
 
-.navbar h3 {
+#userHeader.jumbotron h3 {
 	display: inline-block;
-	color: #DED8E5;
-  font-family: "Carter One", cursive, sans-serif;
-	margin-top: 20px;
-	margin-left: 20px;
+	color: #222;
+    font-family: "Carter One", cursive, sans-serif;
 	font-size: 45px;
+    padding-left: 20px;
 }
 
-.navbar .navto {
+.navbar {
+    background-color: #7D6B95;
+    border: none;
+    border-radius: 0%;
+    border-top: 5px solid #222;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul {
     float: right;
 }
 
-.navbar .navlink {
-    background-color: #DED8E5;
-    color: darkgrey; 
-	display: inline-block;
-	margin-top: 10px;
-	margin-right: 10px;
+.navbar-default .navbar-nav>li>a {
     padding: 5px;
-    border-radius: 5px;
+    padding-right: 20px;
+    color: #DED8E5;
+    font-family: "Carter One", cursive, sans-serif;
+    font-size: 20px;
 }
 
-#explanation {
-    padding-bottom: 30px;
+#addNewModal .modal-content {
+    border-radius: 0px;
 }
 
-#explanation p, #friends p, #library p {
-    font-size: 18px;
+#addNewModal .modal-header {
+    background-color: #DED8E5;
+}
+
+#addNewModal h3 {
+    font-weight: bold;
+}
+
+#friends p, #library p, #mainlibrary p, #mainlibrary p {
+    font-size: 16px;
     font-style: italic;
-    width: 90%;
     margin-left: 20px;
 }
 
-#explanation, #comicForm, #friends, #library, #changePass {
+#comicForm, #friends, #library, #mainlibrary, #changePass {
 	background-color: #DED8E5;
 }
 
-#explanation h3, #comicForm h3, #friends h3, #library h3, #changePass h3 {
+#comicForm h3, #friends h3, #library h3, #changePass h3, #mainlibrary h3 {
 	font-weight: bold;
 	padding: 10px;
 }
 
-#library h3 {
-    display: inline-block;
-}
-
-#addComic {
-	padding: 10px;
-}
-
-#library {
-	margin-top: 50px; 
+#library, #mainlibrary {
+	margin-top: 20px; 
 	margin-bottom: 20px;
+    border: 10px solid #DED8E5;
 }
 
-.comic {
-	border-bottom: 3px solid lightgray;
+#library .btn-primary {
+    margin-top: 20px;
+    color: #DED8E5;
+    background-color: #7D6B95;
+    font-family: "Carter One", cursive, sans-serif;
+    font-size: 15px;
 }
 
-.comic h3 {
+.comic, .archive {
+	min-height: 100px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    padding-top: 10px;
+}
+
+.comic h3, .archive h3 {
 	font-family: "Carter One", cursive, sans-serif;
 	font-size: 15px;
 	color: #7D6B95;
+    display: inline;
+    padding-bottom: 10px;
 }
 
-.comic p {
+.comic p, .archive p {
+    margin-top: 10px;
 	margin-left: 20px;
 	font-style: italic;
-	font-size: 18px;
 }
 
-.comic .btn-default {
+.comic .btn-default, .archive .btn-default {
 	background: none;
     border: none;
     color: #7d6b95;
-    padding: 0px
+    padding: 0px;
+    margin-right: 15px;
 }
 
-.archive .btn-default {
-    background-color: #7D6B95;
-    color: white; 
-}
-
-.comic .glyphicon-remove, .archive .glyphicon-plus {
+.comic .glyphicon-remove, .comic .glyphicon-pencil, .archive .glyphicon-plus {
 	font-size: 18px;
 }
 
+#friends {
+    padding-bottom: 10px;
+}
+
+#mainlibrary p {
+    margin-bottom: 30px;
+}

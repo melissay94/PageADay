@@ -90,6 +90,7 @@ const renderComicList = function() {
 		return (
 			<div key={comic._id} className="comic">
 				<h3 className="name"><a href={comic.link} target="_blank">{comic.name} </a></h3>
+				<button className="btn btn-default"><span className="glyphicon glyphicon-pencil"></span></button>
 				<button className="btn btn-default"><span className="glyphicon glyphicon-remove"></span></button>
 				<p className="review">{comic.review}</p>
 			</div>
