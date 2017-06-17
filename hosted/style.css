@@ -64,7 +64,7 @@
 }
 
 
-.new-user .btn, #addComic .btn, #changeArea .btn {
+.new-user .btn, #addComic .btn, #changeArea .btn, #comicForm .btn {
     color: #DED8E5;
     background-color: #7D6B95;
     font-family: "Carter One", cursive, sans-serif;

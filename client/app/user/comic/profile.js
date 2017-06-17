@@ -67,7 +67,10 @@ const renderComicForm = function() {
 					</div>
 			</div>
 			<div className="form-group row">
-				<div className="offset-md-10 col-md-10">
+				<div className="col-md-3 col-md-offset-6">
+        	<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+				<div className="col-md-3">
 					<input type="hidden" name="_csrf" value={this.props.csrf} />
 					<input className="makeNewComic btn" type="submit" value="Submit!" /> 
 				</div>

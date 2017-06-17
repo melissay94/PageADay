@@ -96,7 +96,16 @@ var renderComicForm = function renderComicForm() {
 			{ className: "form-group row" },
 			React.createElement(
 				"div",
-				{ className: "offset-md-10 col-md-10" },
+				{ className: "col-md-3 col-md-offset-6" },
+				React.createElement(
+					"button",
+					{ type: "button", className: "btn btn-default", "data-dismiss": "modal" },
+					"Close"
+				)
+			),
+			React.createElement(
+				"div",
+				{ className: "col-md-3" },
 				React.createElement("input", { type: "hidden", name: "_csrf", value: this.props.csrf }),
 				React.createElement("input", { className: "makeNewComic btn", type: "submit", value: "Submit!" })
 			)

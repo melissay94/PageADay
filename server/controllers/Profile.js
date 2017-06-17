@@ -65,17 +65,7 @@ const getComics = (request, response) => {
 
 // Get a comic to delete it's entry
 const deleteEntry = (request, response) => {
-  const req = request;
-  const res = response;
 
-  return Comic.ComicModel.findByOwner(req.session.account._id, (err, docs) => {
-    if (err) {
-      console.log(err);
-      return res.status(400).json({ error: 'Something went wrong. Damnit Paul' });
-    }
-
-    return docs;
-  });
 };
 
 // Export function
