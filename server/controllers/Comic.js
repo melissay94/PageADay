@@ -78,14 +78,9 @@ const deleteComic = (request, response) => {
   });
 };
 
-// Edit a comic from their list
-const editComic = (request, response) => {
-
-};
-
 // Export function
 module.exports.comicPage = comicPage;
 module.exports.addComic = addComic;
 module.exports.getComics = getComics;
 module.exports.deleteComic = deleteComic;
-module.exports.editComic = editComic;
+// module.exports.editComic = editComic;

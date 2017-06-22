@@ -15,18 +15,16 @@ const router = (app) => {
   app.get('/archive', mid.requiresLogin, controllers.Archive.archivePage);
   app.get('/getArchives', mid.requiresLogin, controllers.Archive.getArchives);
   app.get('/options', mid.requiresLogin, controllers.Options.optionsPage);
-  app.get('/getUsername', mid.requiresLogin, controllers.Options.getUsername);
 
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
   app.post('/comic', mid.requiresLogin, controllers.Comic.addComic);
   app.post('/archive', mid.requiresLogin, controllers.Archive.makeArchive);
   app.post('/changePass', mid.requiresLogin, controllers.Options.changePassword);
-  app.post('/changeUser', mid.requiresLogin, controllers.Options.changeUsername);
 
   app.delete('/comic/:id', mid.requiresLogin, controllers.Comic.deleteComic);
 
-  app.put('/comic/:id', mid.requiresLogin, controllers.Comic.editComic);
+  // app.put('/comic/:id', mid.requiresLogin, controllers.Comic.editComic);
 };
 
 // Export so we can use it in app.js
