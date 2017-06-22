@@ -10,17 +10,23 @@ const router = (app) => {
   app.get('/getToken', mid.requiresSecure, controllers.Account.getToken);
   app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
-  app.get('/profile', mid.requiresLogin, controllers.Comic.comicPage);
-  app.get('/getComics', mid.requiresLogin, controllers.Comic.getComics);
+  app.get('/comicPage', mid.requiresLogin, controllers.Comic.comicPage);
+  app.get('/comic', mid.requiresLogin, controllers.Comic.getComics);
   app.get('/archive', mid.requiresLogin, controllers.Archive.archivePage);
   app.get('/getArchives', mid.requiresLogin, controllers.Archive.getArchives);
   app.get('/options', mid.requiresLogin, controllers.Options.optionsPage);
-  app.get('/getFriends', mid.requiresLogin, controllers.Friends.getFriends);
+  app.get('/getUsername', mid.requiresLogin, controllers.Options.getUsername);
+
   app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
   app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
-  app.post('/profile', mid.requiresLogin, controllers.Comic.makeComic);
+  app.post('/comic', mid.requiresLogin, controllers.Comic.addComic);
   app.post('/archive', mid.requiresLogin, controllers.Archive.makeArchive);
-  app.post('/options', mid.requiresLogin, controllers.Options.changePassword);
+  app.post('/changePass', mid.requiresLogin, controllers.Options.changePassword);
+  app.post('/changeUser', mid.requiresLogin, controllers.Options.changeUsername);
+
+  app.delete('/comic/:id', mid.requiresLogin, controllers.Comic.deleteComic);
+
+  app.put('/comic/:id', mid.requiresLogin, controllers.Comic.editComic);
 };
 
 // Export so we can use it in app.js

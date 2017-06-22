@@ -14,8 +14,6 @@ var handleComics = function handleComics(e) {
 		return false;
 	}
 
-	console.log($("#comicFormer").serialize());
-
 	sendAjax('POST', $("#comicFormer").attr("action"), $("#comicFormer").serialize(), function () {
 		comicRenderer.loadComicsFromServer();
 	});
@@ -33,9 +31,19 @@ var handleComics = function handleComics(e) {
 	return false;
 };
 
-// Handles deleting an entry to my code
-var handleDeletes = function handleDeletes(e) {
+// Handles deleting a comic from the user's list
+var handleDeletes = function handleDeletes(e, comicId, csrf) {
 	e.preventDefault();
+
+	var data_url = "_id=" + comicId + "&_csrf=" + csrf;
+
+	sendAjax('DELETE', '/comic/' + comicId, data_url, function () {
+		comicRenderer.loadComicsFromServer();
+	});
+
+	handleError("Your comic has been deleted");
+
+	return false;
 };
 
 // Renders the comic form for creating new entries
@@ -45,7 +53,7 @@ var renderComicForm = function renderComicForm() {
 		"form",
 		{ id: "comicFormer", name: "comicFormer",
 			onSubmit: this.handleSubmit,
-			action: "/profile",
+			action: "/comic",
 			method: "POST",
 			className: "comicForm"
 		},
@@ -115,6 +123,8 @@ var renderComicForm = function renderComicForm() {
 
 // Renders the list of comics the user has saved
 var renderComicList = function renderComicList() {
+	var _this = this;
+
 	if (this.state.data.length === 0) {
 		return React.createElement(
 			"div",
@@ -148,7 +158,9 @@ var renderComicList = function renderComicList() {
 			),
 			React.createElement(
 				"button",
-				{ className: "btn btn-default" },
+				{ className: "btn btn-default", onClick: function onClick(e) {
+						return handleDeletes(e, comic._id, _this.props.csrf);
+					} },
 				React.createElement("span", { className: "glyphicon glyphicon-remove" })
 			),
 			React.createElement(
@@ -180,7 +192,7 @@ var setup = function setup(csrf) {
 		displayName: "ComicListClass",
 
 		loadComicsFromServer: function loadComicsFromServer() {
-			sendAjax('GET', '/getComics', null, function (data) {
+			sendAjax('GET', '/comic', null, function (data) {
 				this.setState({ data: data.comics });
 			}.bind(this));
 		},
@@ -195,7 +207,7 @@ var setup = function setup(csrf) {
 
 	comicForm = ReactDOM.render(React.createElement(ComicFormClass, { csrf: csrf }), document.querySelector('#addComic'));
 
-	comicRenderer = ReactDOM.render(React.createElement(ComicListClass, null), document.querySelector("#comics"));
+	comicRenderer = ReactDOM.render(React.createElement(ComicListClass, { csrf: csrf }), document.querySelector("#comics"));
 };
 "use strict";
 

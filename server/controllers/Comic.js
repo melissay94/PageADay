@@ -15,7 +15,7 @@ const comicPage = (req, res) => {
 };
 
 // Creates a new comic entry to add to the server
-const makeComic = (req, res) => {
+const addComic = (req, res) => {
   if (!req.body.name || !req.body.link) {
     return res.status(400).json({ error: 'Name and link required' });
   }
@@ -63,13 +63,29 @@ const getComics = (request, response) => {
   });
 };
 
-// Get a comic to delete it's entry
-const deleteEntry = (request, response) => {
+// Deletes a specified comic from their list
+const deleteComic = (request, response) => {
+  const req = request;
+  const res = response;
+
+  return Comic.ComicModel.findByIdAndRemove(req.body._id, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'Something went wrong. Damnit Paul' });
+    }
+
+    return res.status(200).json({ message: 'Comic Deleted' });
+  });
+};
+
+// Edit a comic from their list
+const editComic = (request, response) => {
 
 };
 
 // Export function
 module.exports.comicPage = comicPage;
-module.exports.makeComic = makeComic;
+module.exports.addComic = addComic;
 module.exports.getComics = getComics;
-module.exports.deleteEntry = deleteEntry;
+module.exports.deleteComic = deleteComic;
+module.exports.editComic = editComic;

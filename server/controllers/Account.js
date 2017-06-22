@@ -37,7 +37,7 @@ const login = (request, response) => {
 
     req.session.account = Account.AccountModel.toAPI(account);
 
-    return res.json({ redirect: '/profile' });
+    return res.json({ redirect: '/comicPage' });
   });
 };
 
@@ -75,7 +75,7 @@ const signup = (request, response) => {
 
     savePromise.then(() => {
       req.session.account = Account.AccountModel.toAPI(newAccount);
-      res.json({ redirect: '/profile' });
+      res.json({ redirect: '/comicPage' });
     });
 
     savePromise.catch((err) => {

@@ -6,7 +6,6 @@ var ArchiveListClass = void 0;
 // If a user wants to add a comic from the archive to their own library
 var handleAddComic = function handleAddComic(e, comic) {
 	e.preventDefault();
-	console.log(comic);
 
 	sendAjax('POST', "/profile", comic);
 

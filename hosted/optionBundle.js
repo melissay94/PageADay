@@ -1,7 +1,7 @@
 "use strict";
 
 // Handles the request to change password
-var handleChange = function handleChange(e) {
+var handlePassChange = function handlePassChange(e) {
 	e.preventDefault();
 
 	if ($("#user").val() == '' || $("#old_pass") == '' || $("new_pass") == '') {
@@ -9,7 +9,7 @@ var handleChange = function handleChange(e) {
 		return false;
 	}
 
-	sendAjax('POST', $('#changeForm').attr("action"), $("#changeForm").serialize());
+	sendAjax('POST', $('#changePass').attr("action"), $("#changePass").serialize());
 
 	// Reset all the fields
 	document.querySelector("#user").value = "";
@@ -22,15 +22,36 @@ var handleChange = function handleChange(e) {
 	return false;
 };
 
+// Handles the request to change username
+var handleUserChange = function handleUserChange(e) {
+	e.preventDefault();
+
+	if ($("#new_user").val() == '' || $("#pass") == '') {
+		handleError("Excuse me, I'mma need all that info");
+		return false;
+	}
+
+	sendAjax('POST', $('#changeUser').attr("action"), $("#changeUser").serialize());
+
+	// Reset all the fields
+	document.querySelector("#new_user").value = "";
+	document.querySelector("#pass").value = "";
+
+	// Using handleError to let them know it succeeded
+	handleError("Username has been changed");
+
+	return false;
+};
+
 // Set up form
 var renderChangePass = function renderChangePass() {
 	return React.createElement(
 		"form",
-		{ id: "changeForm", name: "changeForm",
+		{ id: "changePass", name: "changePass",
 			onSubmit: this.handleSubmit,
-			action: "/options",
+			action: "/changePass",
 			method: "POST",
-			className: "changeForm" },
+			className: "changePass" },
 		React.createElement(
 			"div",
 			{ className: "form-group row" },
@@ -86,15 +107,77 @@ var renderChangePass = function renderChangePass() {
 	);
 };
 
+var renderChangeUsername = function renderChangeUsername() {
+	return React.createElement(
+		"form",
+		{ id: "changeUser", name: "changeUser",
+			onSubmit: this.handleSubmit,
+			action: "/changeUser",
+			method: "POST",
+			className: "changeUser" },
+		React.createElement(
+			"div",
+			{ className: "form-group row" },
+			React.createElement(
+				"label",
+				{ htmlFor: "username", className: "col-md-2 col-form-label" },
+				"New Username: "
+			),
+			React.createElement(
+				"div",
+				{ className: "col-md-10" },
+				React.createElement("input", { id: "new_user", className: "form-control", type: "text", name: "username", placeholder: "Username" })
+			)
+		),
+		React.createElement(
+			"div",
+			{ className: "form-group row" },
+			React.createElement(
+				"label",
+				{ htmlFor: "old_pass", className: "col-md-2 col-form-label" },
+				"Password: "
+			),
+			React.createElement(
+				"div",
+				{ className: "col-md-10" },
+				React.createElement("input", { id: "pass", className: "form-control", type: "password", name: "old_pass", placeholder: "Current Password" })
+			)
+		),
+		React.createElement(
+			"div",
+			{ className: "form-group row" },
+			React.createElement(
+				"div",
+				{ className: "offset-md-10 col-md-10" },
+				React.createElement("input", { type: "hidden", name: "_csrf", value: this.props.csrf }),
+				React.createElement("input", { className: "formSubmit btn", type: "submit", value: "Change Username" })
+			)
+		)
+	);
+};
+
+var renderUsername = function renderUsername() {
+	console.log(this.state.data);
+};
+
 var setup = function setup(csrf) {
 	var OptionsWindow = React.createClass({
 		displayName: "OptionsWindow",
 
-		handleSubmit: handleChange,
+		handleSubmit: handlePassChange,
 		render: renderChangePass
 	});
 
-	ReactDOM.render(React.createElement(OptionsWindow, { csrf: csrf }), document.querySelector("#changeArea"));
+	var UserWindow = React.createClass({
+		displayName: "UserWindow",
+
+		handleSubmit: handleUserChange,
+		render: renderChangeUsername
+	});
+
+	ReactDOM.render(React.createElement(OptionsWindow, { csrf: csrf }), document.querySelector("#changePass"));
+
+	ReactDOM.render(React.createElement(UserWindow, { csrf: csrf }), document.querySelector("#changeUser"));
 };
 "use strict";
 
