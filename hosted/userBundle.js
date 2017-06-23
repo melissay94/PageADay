@@ -153,11 +153,6 @@ var renderComicList = function renderComicList() {
 			),
 			React.createElement(
 				"button",
-				{ className: "btn btn-default" },
-				React.createElement("span", { className: "glyphicon glyphicon-pencil" })
-			),
-			React.createElement(
-				"button",
 				{ className: "btn btn-default", onClick: function onClick(e) {
 						return handleDeletes(e, comic._id, _this.props.csrf);
 					} },

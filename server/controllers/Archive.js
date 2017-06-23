@@ -7,8 +7,8 @@ const archivePage = (req, res) => {
   res.render('archive', { csrfToken: req.csrfToken() });
 };
 
-// Make an archives entry
-const makeArchive = (req, res) => {
+// Add an archives entry
+const addArchive = (req, res) => {
   if (!req.body.name || !req.body.link) {
     return res.status(400).json({ error: 'Name and link required' });
   }
@@ -54,5 +54,5 @@ const getArchives = (request, response) => {
 };
 // Export all the functions
 module.exports.archivePage = archivePage;
-module.exports.makeArchive = makeArchive;
+module.exports.addArchive = addArchive;
 module.exports.getArchives = getArchives;

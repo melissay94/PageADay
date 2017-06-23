@@ -7,7 +7,7 @@ var ArchiveListClass = void 0;
 var handleAddComic = function handleAddComic(e, comic) {
 	e.preventDefault();
 
-	sendAjax('POST', "/profile", comic);
+	sendAjax('POST', "/comic", comic);
 
 	// Have it let the user know it was added
 	handleError("You've added a new comic to your library");
@@ -69,7 +69,7 @@ var setup = function setup(csrf) {
 		displayName: "ArchiveListClass",
 
 		loadArchiveFromServer: function loadArchiveFromServer() {
-			sendAjax('GET', '/getArchives', null, function (data) {
+			sendAjax('GET', '/archives', null, function (data) {
 				this.setState({ data: data.archives });
 			}.bind(this));
 		},

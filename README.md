@@ -3,7 +3,7 @@ A service to make a quick links page to all your favorite web comics and review 
 
 *Started as a class project, continuing to improve*
 
-Link: https://pageaday.herokuapp.com/profile
+Link: https://pageaday.herokuapp.com/
 
 ## Currently using the following: 
 + Bootstrap 3

@@ -9,7 +9,7 @@ const requiresLogin = (req, res, next) => {
 // Checks if the user already logged in
 const requiresLogout = (req, res, next) => {
   if (req.session.account) {
-    return res.redirect('/profile');
+    return res.redirect('/comicPage');
   }
   return next();
 };

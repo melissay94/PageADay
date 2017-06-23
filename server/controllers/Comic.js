@@ -32,7 +32,7 @@ const addComic = (req, res) => {
   const comicPromise = newComic.save();
 
   comicPromise.then(() => res.json({
-    redirect: '/profile',
+    redirect: '/comicPage',
   }));
 
   comicPromise.catch((err) => {

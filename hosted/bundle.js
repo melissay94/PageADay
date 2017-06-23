@@ -93,7 +93,7 @@ var renderComicForm = function renderComicForm() {
 		"form",
 		{ id: "comicFormer", name: "comicFormer",
 			onSubmit: this.handleSubmit,
-			action: "/profile",
+			action: "/comic",
 			method: "POST",
 			className: "comicForm"
 		},

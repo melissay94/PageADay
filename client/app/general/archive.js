@@ -5,7 +5,7 @@ let ArchiveListClass;
 const handleAddComic = (e, comic) => {
 	e.preventDefault();
 
-	sendAjax('POST', "/profile", comic);
+	sendAjax('POST', "/comic", comic);
 
 	// Have it let the user know it was added
 	handleError("You've added a new comic to your library");
@@ -46,7 +46,7 @@ const setup = function(csrf) {
 
 	ArchiveListClass = React.createClass({
 		loadArchiveFromServer: function() {
-			sendAjax('GET', '/getArchives', null, function(data) {
+			sendAjax('GET', '/archives', null, function(data) {
 				this.setState({ data: data.archives });
 			}.bind(this));
 		},
